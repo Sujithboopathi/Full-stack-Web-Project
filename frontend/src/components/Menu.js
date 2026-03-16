@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 // Sample menu data for development/fallback
 const sampleMenuItems = [
-  { id: 1, name: 'Masala Dosa', price: 80, image: 'https://t3.ftcdn.net/jpg/04/73/77/79/360_F_473777916_8jLRp3i9l4l2y6i6i6i6i6i6i6i6i6i.jpg' },
-  { id: 2, name: 'Sambar Idli', price: 60, image: 'https://t3.ftcdn.net/jpg/04/73/77/79/360_F_473777916_8jLRp3i9l4l2y6i6i6i6i6i6i6i6i6.jpg' },
-  { id: 3, name: 'Ven Pongal', price: 70, image: 'https://t3.ftcdn.net/jpg/04/73/77/79/360_F_473777916_8jLRp3i9l4l2y6i6i6i6i6i6i6i6i6.jpg' },
-  { id: 4, name: 'Chicken Biryani', price: 180, image: 'https://t3.ftcdn.net/jpg/04/73/77/79/360_F_473777916_8jLRp3i9l4l2y6i6i6i6i6i6i6i6i6.jpg' },
-  { id: 5, name: 'Filter Coffee', price: 30, image: 'https://t3.ftcdn.net/jpg/04/73/77/79/360_F_473777916_8jLRp3i9l4l2y6i6i6i6i6i6i6i6i6.jpg' },
-  { id: 6, name: 'Plain Dosa', price: 60, image: 'https://t3.ftcdn.net/jpg/04/73/77/79/360_F_473777916_8jLRp3i9l4l2y6i6i6i6i6i6i6i6i6.jpg' },
+  { id: 1, name: 'Masala Dosa', price: 80, image: 'https://images.unsplash.com/photo-1589301760014-d929f39ce9b1?w=800&auto=format&fit=crop' },
+  { id: 2, name: 'Sambar Idli', price: 60, image: 'https://images.unsplash.com/photo-1589301773112-0071c107dcac?w=800&auto=format&fit=crop' },
+  { id: 3, name: 'Ven Pongal', price: 70, image: 'https://images.unsplash.com/photo-1626200419109-3286de7676fb?w=800&auto=format&fit=crop' },
+  { id: 4, name: 'Chicken Biryani', price: 180, image: 'https://images.unsplash.com/photo-1563379091339-03f1eb9c9e54?w=800&auto=format&fit=crop' },
+  { id: 5, name: 'Filter Coffee', price: 30, image: 'https://images.unsplash.com/photo-1622485559388-7e3e7f53f3e1?w=800&auto=format&fit=crop' },
+  { id: 6, name: 'Plain Dosa', price: 60, image: 'https://images.unsplash.com/photo-1668236543090-82eba5ee48a9?w=800&auto=format&fit=crop' },
 ];
 
 function Menu({ user }) {
