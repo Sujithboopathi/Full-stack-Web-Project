@@ -49,8 +49,9 @@ function Checkout({ user }) {
       localStorage.removeItem('cart');
       navigate('/bill');
     } catch (err) {
-      console.error('Order error:', err.response?.data || err.message || err);
-      alert('Failed to place order. Please try again.');
+      const errorMsg = err.response?.data?.message || err.response?.data?.error || err.message || 'Unknown error';
+      console.error('Order error details:', err.response?.data || err);
+      alert(`Failed to place order: ${errorMsg}`);
     } finally {
       setLoading(false);
     }
