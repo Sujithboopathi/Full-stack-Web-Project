@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 64 64" role="img" aria-label="College Food Court">
+  <rect width="64" height="64" rx="12" fill="#fff"/>
+  <path d="M19 42c0 1.7 1.6 3 3.5 3h19c1.9 0 3.5-1.3 3.5-3V28H19v14z" fill="#FF6B6B"/>
+  <path d="M23 20c0-3.3 5-6 9-6s9 2.7 9 6v3H23v-3z" fill="#f95a3b"/>
+  <text x="10" y="60" font-size="7" fill="#2D3748" font-family="Segoe UI, Arial" font-weight="700">Food Court</text>
+</svg>
