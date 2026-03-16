@@ -22,7 +22,24 @@ app.use(cors({
   credentials: true
 }));
 
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY;
+let supabase = null;
+
+if (supabaseUrl && supabaseKey) {
+  supabase = createClient(supabaseUrl, supabaseKey);
+} else {
+  console.warn("WARNING: Supabase URL or Key is missing. Vercel environment variables are likely not set correctly.");
+}
+app.use('/api/*', (req, res, next) => {
+  if (!supabase) {
+    return res.status(500).json({ 
+      error: "Supabase Environment Variables are missing!", 
+      message: "Please add SUPABASE_URL and SUPABASE_ANON_KEY in your Vercel Dashboard under Settings -> Environment Variables, and then REDEPLOY the app."
+    });
+  }
+  next();
+});
 
 app.use('/api/menu', require('./routes/menu')(supabase));
 app.use('/api/orders', require('./routes/order')(supabase));
