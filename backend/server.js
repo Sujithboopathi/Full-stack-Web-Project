@@ -36,4 +36,10 @@ app.use('/api/*', (req, res, next) => {
 app.use('/api/menu', require('./routes/menu')(supabase));
 app.use('/api/orders', require('./routes/order')(supabase));
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+// Only listen on port 5000 if running locally (not in Vercel)
+if (require.main === module) {
+  app.listen(5000, () => console.log('Server running on port 5000'));
+}
+
+// Export for Vercel serverless functions
+module.exports = app;
