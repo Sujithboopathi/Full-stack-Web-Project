@@ -21,19 +21,21 @@ module.exports = (supabase) => {
       // Let Supabase auto-generate the ID
       // items is JSONB, so we pass it directly
       const orderToInsert = {
-        items: items,
-        total: total,
-        user: user
+        items,
+        total,
+        user,
+        date: req.body.date || new Date().toISOString()
       };
       
+      console.log('Inserting into Supabase:', orderToInsert);
       const { data, error } = await supabase.from('orders').insert([orderToInsert]).select();
 
       if (error) {
-        console.error('Supabase insert error:', error);
+        console.error('Supabase insert error details:', JSON.stringify(error, null, 2));
         return res.status(500).json({ message: 'DB insert failed', details: error });
       }
 
-      console.log('Order inserted:', data);
+      console.log('Order successfully inserted into Supabase:', data);
       res.status(201).json(data[0] || data);
     } catch (err) {
       console.error('Unexpected server error:', err);
