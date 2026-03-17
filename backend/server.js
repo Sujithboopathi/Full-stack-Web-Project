@@ -12,9 +12,15 @@ app.use((req, res, next) => {
   next();
 });
 
-// Permissive CORS to resolve local/production blockers
+// allow requests from localhost (dev) and any Vercel deployment (production)
 app.use(cors({
-  origin: true,
+  origin: function (origin, callback) {
+    if (!origin || origin.includes('localhost') || origin.includes('127.0.0.1') || origin.includes('vercel.app')) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
