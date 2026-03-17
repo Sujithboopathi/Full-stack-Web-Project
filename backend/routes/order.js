@@ -35,11 +35,24 @@ module.exports = (supabase) => {
         return res.status(500).json({ message: 'DB insert failed', details: error });
       }
 
-      console.log('Order successfully inserted into Supabase:', data);
-      res.status(201).json(data[0] || data);
+      console.log('Order successfully inserted into Supabase:', {
+        count: data?.length,
+        id: data?.[0]?.id
+      });
+
+      if (!data || data.length === 0) {
+         console.warn('Supabase inserted but returned no data. Check table triggers.');
+         return res.status(201).json({ success: true, message: 'Ordering completed (no return data)' });
+      }
+
+      res.status(201).json(data[0]);
     } catch (err) {
-      console.error('Unexpected server error:', err);
-      res.status(500).json({ message: 'Server error', error: err.message || err });
+      console.error('Unexpected server error during order creation:', err);
+      res.status(500).json({ 
+        message: 'Server failed to process order', 
+        error: err.message,
+        stack: err.stack
+      });
     }
   });
 
